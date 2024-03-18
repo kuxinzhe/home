@@ -9,8 +9,9 @@
       <div class="container" v-show="!store.backgroundShow">
         <section class="all" v-show="!store.setOpenState">
           <MainLeft />
-          <MainRight v-show="!store.boxOpenState" />
+          <MainRight v-show="!store.boxOpenState && !store.competenceState" />
           <Box v-show="store.boxOpenState" />
+          <Compentence v-show="store.competenceState" />
         </section>
         <section class="more" v-show="store.setOpenState" @click="store.setOpenState = false">
           <MoreSet />
@@ -25,10 +26,14 @@
       >
         <component :is="store.mobileOpenState ? CloseSmall : HamburgerButton" />
       </Icon>
-      <!-- 页脚 -->
-      <Transition name="fade" mode="out-in">
+      <!-- <Transition name="fade" mode="out-in">
         <Footer v-show="!store.backgroundShow && !store.setOpenState" />
-      </Transition>
+      </Transition> -->
+
+      <!-- 页脚 -->
+      <!-- <Transition name="fade" mode="out-in">
+        <Footer v-show="!store.backgroundShow && !store.setOpenState" />
+      </Transition> -->
     </main>
   </Transition>
 </template>
@@ -43,6 +48,7 @@ import MainRight from "@/views/Main/Right.vue";
 import Background from "@/components/Background.vue";
 import Footer from "@/components/Footer.vue";
 import Box from "@/views/Box/index.vue";
+import Compentence from "@/views/Compentence/index.vue";
 import MoreSet from "@/views/MoreSet/index.vue";
 import cursorInit from "@/utils/cursor.js";
 import config from "@/../package.json";
@@ -117,6 +123,12 @@ onMounted(() => {
 |_____|_|  |_|_____/   |_|      |_|`;
   const content = `\n\n版本: ${config.version}\n主页: ${config.home}\nGithub: ${config.github}`;
   console.info(`%c${title1} %c${title2} %c${content}`, styleTitle1, styleTitle2, styleContent);
+
+  console.log("data",store.accessNumber)
+  //页面访问数量
+   store.addAccessNumber()
+   console.log("data1",store.accessNumber)
+
 });
 
 onBeforeUnmount(() => {

@@ -43,7 +43,7 @@
 <script setup>
 import { Icon } from "@vicons/utils";
 // 可前往 https://www.xicons.org 自行挑选并在此处引入
-import { Link, Blog, CompactDisc, Cloud, Compass, Book, Fire, LaptopCode } from "@vicons/fa"; // 注意使用正确的类别
+import { Link, Blog, AlignLeft, Cloud, Compass, Book, Fire, LaptopCode } from "@vicons/fa"; // 注意使用正确的类别
 import { mainStore } from "@/store";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Mousewheel } from "swiper";
@@ -58,6 +58,7 @@ const siteLinksList = computed(() => {
     const subArr = siteLinks.slice(i, i + 6);
     result.push(subArr);
   }
+
   return result;
 });
 
@@ -65,7 +66,7 @@ const siteLinksList = computed(() => {
 const siteIcon = {
   Blog,
   Cloud,
-  CompactDisc,
+  AlignLeft,
   Compass,
   Book,
   Fire,
@@ -74,16 +75,35 @@ const siteIcon = {
 
 // 链接跳转
 const jumpLink = (data) => {
-  if (data.name === "音乐" && store.musicClick) {
-    if (typeof $openList === "function") $openList();
-  } else {
+  console.log(data+'===========data')
+  console.log(typeof $openList)
+  if (data.name === "技能特长" ) {
+    console.log('技能特长')
+    changeBox()
+  }else {
     window.open(data.link, "_blank");
   }
 };
 
 onMounted(() => {
-  console.log(siteLinks);
+  console.log(siteLinks+'----------sitelinks');
 });
+
+
+const changeBox = () => {
+  if (store.getInnerWidth >= 990) {
+    store.competenceState = !store.boxOpenState;
+  } else {
+    ElMessage({
+      message: "当前页面宽度不足以开启盒子",
+      grouping: true,
+      icon: h(Error, {
+        theme: "filled",
+        fill: "#efefef",
+      }),
+    });
+  }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,17 +1,17 @@
 [
   {
     "icon": "Blog",
-    "name": "博客",
+    "name": "大佬的博客",
     "link": "https://blog.imsyy.top/"
   },
   {
     "icon": "Cloud",
-    "name": "网盘",
-    "link": "https://pan.imsyy.top/"
-  },
+    "name": "个人简历",
+    "link": "https://tangjie-java.oss-cn-beijing.aliyuncs.com/%E5%94%90%E6%9D%B0%E7%9A%84%E7%AE%80%E5%8E%86%20.pdf"
+    },
   {
-    "icon": "CompactDisc",
-    "name": "音乐",
+    "icon": "AlignLeft",
+    "name": "技能特长",
     "link": "https://music.imsyy.top/"
   },
   {

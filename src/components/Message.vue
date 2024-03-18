@@ -2,11 +2,15 @@
   <!-- 基本信息 -->
   <div class="message">
     <!-- Logo -->
+
     <div class="logo">
       <img class="logo-img" :src="siteLogo" alt="logo" />
       <div :class="{ name: true, 'text-hidden': true, long: siteUrl[0].length >= 6 }">
-        <span class="bg">{{ siteUrl[0] }}</span>
-        <span class="sm">.{{ siteUrl[1] }}</span>
+        <!-- <span class="bg">{{ siteUrl[0] }}</span> -->
+        <span class="sm">{{ siteUrl[0] }}</span>
+        <div>
+          <p>总访问量: {{accessNumber}}</p>
+        </div>
       </div>
     </div>
     <!-- 简介 -->
@@ -36,17 +40,23 @@ const store = mainStore();
 
 // 主页站点logo
 const siteLogo = import.meta.env.VITE_SITE_MAIN_LOGO;
+
+const accessNumber = store.accessNumber;
+
 // 站点链接
 const siteUrl = computed(() => {
   const url = import.meta.env.VITE_SITE_URL;
-  if (!url) return "imsyy.top".split(".");
-  // 判断协议前缀
-  if (url.startsWith("http://") || url.startsWith("https://")) {
-    const urlFormat = url.replace(/^(https?:\/\/)/, "");
-    return urlFormat.split(".");
-  }
-  return url.split(".");
+  // if (!url) return "imsyy.top".split(".");
+  // // 判断协议前缀
+  // if (url.startsWith("http://") || url.startsWith("https://")) {
+  //   const urlFormat = url.replace(/^(https?:\/\/)/, "");
+  //   return urlFormat.split(".");
+  // }
+  //return url.split(".");
+  return ["long may the sun shine"];
 });
+
+
 
 // 简介区域文字
 const descriptionText = reactive({
@@ -109,7 +119,7 @@ watch(
 
       .sm {
         margin-left: 6px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         @media (min-width: 720px) and (max-width: 789px) {
           display: none;
         }

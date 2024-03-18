@@ -22,7 +22,8 @@
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "swiper": "^9.4.1",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@icon-park/vue-next": "^1.4.2",

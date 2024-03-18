@@ -13,6 +13,7 @@ export const mainStore = defineStore("main", {
       musicOpenState: false, // 音乐面板开启状态
       backgroundShow: false, // 壁纸展示状态
       boxOpenState: false, // 盒子开启状态
+      competenceState: false,//技能盒子的开启状态
       mobileOpenState: false, // 移动端开启状态
       mobileFuncState: false, // 移动端功能区开启状态
       setOpenState: false, // 设置页面开启状态
@@ -25,6 +26,7 @@ export const mainStore = defineStore("main", {
       playerAutoplay: false, // 是否自动播放
       playerLoop: "all", // 循环播放 "all", "one", "none"
       playerOrder: "list", // 循环顺序 "list", "random"
+      accessNumber: 0, //页面访问字数
     };
   },
   getters: {
@@ -43,6 +45,10 @@ export const mainStore = defineStore("main", {
     getInnerWidth(state) {
       return state.innerWidth;
     },
+    //获取访问数量
+    getAccessNumber(state){
+      return state.accessNumber;
+    }
   },
   actions: {
     // 更改当前页面宽度
@@ -74,6 +80,9 @@ export const mainStore = defineStore("main", {
     setImgLoadStatus(value) {
       this.imgLoadStatus = value;
     },
+    addAccessNumber(){
+      this.accessNumber = this.accessNumber+1;
+    }
   },
   persist: {
     key: "data",
@@ -88,6 +97,7 @@ export const mainStore = defineStore("main", {
       "playerAutoplay",
       "playerLoop",
       "playerOrder",
+      "accessNumber",
     ],
   },
 });
